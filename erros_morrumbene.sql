@@ -6,3 +6,5 @@ SELECT obs_id,person_id, concept_id,order_id,obs_datetime,location_id ,voided
   DELETE FROM openmrs.obs WHERE obs_id IN (2110833,2110834);
  -- delete from openmrs.obs where obs_id in ();
 -- delete from openmrs.obs where obs_id in ();
+
+ERROR 1062 (23000): Duplicate entry '08111101/15/0184' 

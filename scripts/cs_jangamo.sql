@@ -1,7 +1,7 @@
 
 use openmrs;
 
-set @ydata := '2019-06-20';
+set @ydata := '2019-09-20';
 set @sismaLocationID := 1080707; -- cs jangamo
 set @openmrsID :=413;
 

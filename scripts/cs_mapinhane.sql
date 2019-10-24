@@ -1,6 +1,6 @@
 USE openmrs;
 
-SET @ydata := '2019-06-20';
+SET @ydata := '2019-09-20';
 SET @sismaLocationID := 1081307;  -- CS Mapinhane
 SET @openmrsID :=212;
 

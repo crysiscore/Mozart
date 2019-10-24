@@ -1,6 +1,6 @@
 use openmrs;
 
-set @ydata := '2019-06-20';
+set @ydata := '2019-09-20';
 set @sismaLocationID := 1080507; -- cs_chongola 
 set @openmrsID :=211;
 

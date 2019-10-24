@@ -1,11 +1,12 @@
 use openmrs;
-set @ydata := '2019-06-20';
+set @ydata := '2019-09-20';
 set @sismaLocationID := 1080706; -- cs_cumbana
 set @openmrsID :=404;
 
 
 insert into global_property (property,property_value,description,uuid)
 values('esaudemetadata.hfc',@sismaLocationID,'health facility code',uuid());
+
 insert into global_property (property,property_value,description,uuid) 
 values('esaudemetadata.dateToImportTo',@ydata,'Date when data should be fetched to provide it',uuid());
 
