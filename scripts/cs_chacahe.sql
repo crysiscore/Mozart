@@ -1,30 +1,30 @@
-USE openmrs;
+use openmrs;
 
-SET @ydata := '2019-12-20';
-SET @sismaLocationID := 1081307;  -- CS Mapinhane
-SET @openmrsID :=212;
+set @ydata := '2019-09-20';
+set @sismaLocationID := 1080506; -- cs_chacane
+set @openmrsID :=425;
 
 
-INSERT INTO global_property (property,property_value,description,UUID)
-VALUES('esaudemetadata.hfc',@sismaLocationID,'health facility code',UUID());
-INSERT INTO global_property (property,property_value,description,UUID) 
-VALUES('esaudemetadata.dateToImportTo',@ydata,'Date when data should be fetched to provide it',UUID());
+insert into global_property (property,property_value,description,uuid)
+values('esaudemetadata.hfc',@sismaLocationID,'health facility code',uuid());
+insert into global_property (property,property_value,description,uuid) 
+values('esaudemetadata.dateToImportTo',@ydata,'Date when data should be fetched to provide it',uuid());
 
-SET FOREIGN_KEY_CHECKS = 0;
+SET foreign_key_checks = 0;
 UPDATE obs en SET en.location_id = @openmrsID WHERE en.location_id IS NULL OR en.location_id != @openmrsID;
 UPDATE encounter en SET en.location_id = @openmrsID WHERE en.location_id IS NULL OR en.location_id != @openmrsID;
 UPDATE visit en SET en.location_id = @openmrsID WHERE en.location_id IS NULL OR en.location_id != @openmrsID;
 UPDATE patient_program en SET en.location_id = @openmrsID WHERE en.location_id IS NULL OR en.location_id != @openmrsID;
 
-CALL temp.proc_remove_dups_filas();
-CALL temp.proc_remove_dups_buscas();
+call temp.proc_remove_dups_filas();
+call temp.proc_remove_dups_buscas();
 
 -- Check if two patients are using the same NID (Problem caused by synchronization)
 -- ---------------------------------------------------------------------------------
-SELECT identifier,COUNT(*)
+SELECT identifier,Count(*)
 FROM openmrs.patient_identifier
 WHERE voided=0 AND identifier_type=2
 GROUP BY identifier
-HAVING COUNT(*)>=2;
+HAVING Count(*)>=2;
 
-CALL export_db.EXPORTDB();
+call export_db.EXPORTDB();

@@ -1,6 +1,6 @@
 use openmrs;
 
-set @ydata := '2019-09-20';
+set @ydata := '2019-12-20';
 set @sismaLocationID := 1080306; -- cs_doane
 set @openmrsID :=212;
 

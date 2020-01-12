@@ -1,6 +1,6 @@
 
 select obs_id,person_id, concept_id,order_id,obs_datetime,location_id 
- from openmrs.obs where encounter_id= 711116 order by concept_id ;
+ from openmrs.obs where encounter_id= 714749 order by concept_id ;
 
 
 
@@ -35,3 +35,18 @@ select obs_id,person_id, concept_id,order_id,obs_datetime,location_id
 
 
   delete  from openmrs.obs where obs_id in (6771828);
+
+
+
+  delete  from openmrs.obs where obs_id in (6771889);
+
+  delete  from openmrs.obs where obs_id in (6771887);
+
+  delete  from openmrs.obs where obs_id in (6771888);
+
+  delete  from openmrs.obs where obs_id in (6772093,6772095);
+  delete  from openmrs.obs where obs_id in (6772094,6772282,6772283,6772284);
+
+
+  
+  

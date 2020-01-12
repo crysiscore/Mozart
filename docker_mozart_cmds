@@ -33,13 +33,22 @@ netstat -ltnpa | grep -i --colour LISTEN
 # parameters -d for detach mode
 #            -it for stdin 
 docker exec -it clean  /bin/bash && \ 
-apt-get install -y vim && vim /root/.OpenMRS/openmrs-runtime.properties
+apt-get install -y vim && vim /root/.OpenMRS/openmrs-runtime.properties 
+
+source schema_sp_export_modified.sql
+create database temp; use temp;
+source  mozart_sp_rmdups.sql;
+create database openmrs; use openmrs ; source 
+call temp.proc_remove_dups_buscas();
+call temp.proc_remove_dups_filas();
+call export_db.EXPORTDB();
 
 ############################################################################################
 docker run --name mzrt_inharrime -d  -v ~/epts/openmrs/backups:/opt/data -p 3310:3306 mozart  docker exec -it mzrt_inharrime  /bin/bash 
-docker run --name mzrt_zandamela -d  -v ~/epts/openmrs/backups:/opt/data -p 3311:3306 mozart  docker exec -it mzrt_zandamela  /bin/bash 
-docker run --name mzrt_quissico  -d  -v ~/epts/openmrs/backups:/opt/data -p 3312:3306 mozart  docker exec -it mzrt_quissico   /bin/bash 
-docker run --name mzrt_panda     -d  -v ~/epts/openmrs/backups:/opt/data -p 3313:3306 mozart  docker exec -it mzrt_panda      /bin/bash 
+docker run --name mzrt_zandamela -d  -v ~/epts/openmrs/backups:/opt/data -p 3311:3306 mozart && docker exec -it mzrt_zandamela  /bin/bash 
+docker run --name mzrt_quissico  -d  -v ~/epts/openmrs/backups:/opt/data -p 3312:3306 mozart && docker exec -it mzrt_quissico   /bin/bash 
+docker run --name mzrt_panda     -d  -v ~/epts/openmrs/backups:/opt/data -p 3313:3306 mozart && docker exec -it mzrt_panda  /bin/bash 
+
 docker run --name mzrt_maundene  -d  -v ~/epts/openmrs/backups:/opt/data -p 3314:3306 mozart  docker exec -it mzrt_maundene   /bin/bash 
 docker run --name mzrt_chongola  -d  -v ~/epts/openmrs/backups:/opt/data -p 3315:3306 mozart  docker exec -it mzrt_chongola   /bin/bash 
 docker run --name mzrt_cumbana   -d  -v ~/epts/openmrs/backups:/opt/data -p 3316:3306 mozart  docker exec -it mzrt_cumbana    /bin/bash 
@@ -53,28 +62,30 @@ docker run --name backup_ct    -d  -v ~/epts/openmrs/backups:/opt/data  mozart  
 
 docker run --name mzrt_salela      -d  -v ~/epts/openmrs/backups:/opt/data -p 3321:3306 mozart  docker exec -it mzrt_salela    /bin/bash 
 docker run --name mzrt_agostinho   -d  -v ~/epts/openmrs/backups:/opt/data -p 3322:3306 mozart  docker exec -it mzrt_agostinho /bin/bash 
-docker run --name mzrt_mabil       -d  -v ~/epts/openmrs/backups:/opt/data -p 3323:3306 mozart  docker exec -it mzrt_mabil     /bin/bash 
+docker run --name mzrt_mabil       -d  -v ~/epts/openmrs/backups:/opt/data -p 3323:3306 mozart && docker exec -it mzrt_mabil     /bin/bash 
 docker run --name mzrt_maxixe      -d  -v ~/epts/openmrs/backups:/opt/data -p 3325:3306 mozart  docker exec -it mzrt_maxixe    /bin/bash 
-docker run --name mzrt_homoine     -d  -v ~/epts/openmrs/backups:/opt/data -p 3326:3306 mozart  docker exec -it mzrt_homoine  /bin/bash 
+docker run --name mzrt_homoine     -d  -v ~/epts/openmrs/backups:/opt/data -p 3326:3306 mozart &&  docker exec -it mzrt_homoine  /bin/bash 
 docker run --name mzrt_chicuque    -d  -v ~/epts/openmrs/backups:/opt/data -p 3327:3306 mozart  docker exec -it mzrt_chicuque   /bin/bash 
 docker run --name mzrt_manhala     -d  -v ~/epts/openmrs/backups:/opt/data -p 3328:3306 mozart  docker exec -it mzrt_manhala   /bin/bash 
 docker run --name mzrt_morrumbene  -d  -v ~/epts/openmrs/backups:/opt/data -p 3329:3306 mozart  docker exec -it mzrt_morrumbene /bin/bash 
 docker run --name mzrt_massinga    -d  -v ~/epts/openmrs/backups:/opt/data -p 3330:3306 mozart  docker exec -it mzrt_massinga   /bin/bash 
 docker run --name mzrt_funhalouro  -d  -v ~/epts/openmrs/backups:/opt/data -p 3331:3306 mozart  docker exec -it mzrt_funhalouro /bin/bash 
 docker run --name mzrt_mapinhane   -d  -v ~/epts/openmrs/backups:/opt/data -p 3324:3306 mozart  docker exec -it mzrt_mapinhane   /bin/bash
+docker run --name mzrt_bembe       -d  -v ~/epts/openmrs/backups:/opt/data -p 3341:3306 mozart  && docker exec -it mzrt_bembe   /bin/bash
 
 
 docker run --name mzrt_hrv         -d  -v ~/epts/openmrs/backups:/opt/data -p 3332:3306 mozart  docker exec -it mzrt_hrv       /bin/bash 
 docker run --name mzrt_mabote      -d  -v ~/epts/openmrs/backups:/opt/data -p 3334:3306 mozart  docker exec -it mzrt_mabote    /bin/bash 
 docker run --name mzrt_mangungumete -d  -v ~/epts/openmrs/backups:/opt/data -p 3336:3306 mozart  docker exec -it mzrt_mangungumete  /bin/bash 
 docker run --name mzrt_inhassoro   -d  -v ~/epts/openmrs/backups:/opt/data -p 3337:3306 mozart  docker exec -it mzrt_inhassoro /bin/bash 
-docker run --name mzrt_doane       -d  -v ~/epts/openmrs/backups:/opt/data -p 3338:3306 mozart  docker exec -it mzrt_doane     /bin/bash 
+docker run --name mzrt_doane       -d  -v ~/epts/openmrs/backups:/opt/data -p 3338:3306 mozart  && docker exec -it mzrt_doane     /bin/bash 
 docker run --name mzrt_chibuene    -d  -v ~/epts/openmrs/backups:/opt/data -p 3333:3306 mozart  docker exec -it mzrt_chibuene  /bin/bash 
 docker run --name mzrt_pambara     -d  -v ~/epts/openmrs/backups:/opt/data -p 3335:3306 mozart  docker exec -it mzrt_pambara   /bin/bash
 
 
 
+docker run --name mzrt_gaza    -d  -v ~/epts/openmrs/backups:/opt/data -p 3339:3306 mozart  docker exec -it mzrt_gaza /bin/bash
+docker run --name reports  -d  -v ~/epts/openmrs/backups:/opt/data -p 8080:8080 mozart  docker exec -it reports /bin/bash
 
-docker run --name mzrt_gaza    -d  -v ~/epts/openmrs/backups:/opt/data -p 3337:3306 mozart  docker exec -it backup_ct /bin/bash 
 
 
