@@ -1,14 +1,15 @@
 use openmrs;
 
 set @ydata := '2019-12-20';
-set @sismaLocationID := 1081016; -- cs_manhala
-set @openmrsID :=212;
+set @sismaLocationID := 1080308; -- cs_save
+set @openmrsID :=209;
 
 
 insert into global_property (property,property_value,description,uuid)
 values('esaudemetadata.hfc',@sismaLocationID,'health facility code',uuid());
 insert into global_property (property,property_value,description,uuid) 
 values('esaudemetadata.dateToImportTo',@ydata,'Date when data should be fetched to provide it',uuid());
+
 
 SET foreign_key_checks = 0;
 UPDATE obs en SET en.location_id = @openmrsID WHERE en.location_id IS NULL OR en.location_id != @openmrsID;

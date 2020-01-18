@@ -1,7 +1,7 @@
 use openmrs;
 
 set @ydata := '2019-12-20';
-set @sismaLocationID := 1081016; -- cs_manhala
+set @sismaLocationID := 1080913; -- cs_rio_das_pedras
 set @openmrsID :=212;
 
 

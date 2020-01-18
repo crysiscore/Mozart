@@ -1,6 +1,6 @@
 use openmrs;
 
-set @ydata := '2019-09-20';
+set @ydata := '2019-12-20';
 set @sismaLocationID := 1080606; -- cs_inhassoro
 set @openmrsID :=412;
 

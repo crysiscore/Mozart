@@ -1,8 +1,9 @@
 use openmrs;
 
 set @ydata := '2019-12-20';
-set @sismaLocationID := 1081016; -- cs_manhala
-set @openmrsID :=212;
+set @sismaLocationID := 1080309; -- cs_mambone
+set @openmrsID :=208;
+
 
 
 insert into global_property (property,property_value,description,uuid)

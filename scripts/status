@@ -1,0 +1,36 @@
+mabote
+pambara
+mapinhane
+zandamela
+panda
+quissico 
+mabil
+bembe
+manhala
+doane
+homoine
+urbano
+morrumbene
+cumbana
+maxixe
+funhalouro
+chibuene
+massinga
+hrv
+chicuque
+inhassoro
+maundene
+hrv
+massinga
+maluvane
+cangela
+chiunze
+muane
+mambone
+belane
+
+
+
+select location_id, name , description from location where name like "%pedras%";
+create user 'esaude'@'%'; set password for 'esaude'@'%' = password('esaude'); 
+grant all privileges on export_db.* to 'esaude'@'%'; flush privileges;

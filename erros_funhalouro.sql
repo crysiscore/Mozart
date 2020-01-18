@@ -7,4 +7,5 @@ select obs_id,person_id, concept_id,order_id,obs_datetime,location_id
  delete  from openmrs.obs where obs_id in (1419144);
   delete from openmrs.obs where obs_id in (1438203);
    delete from openmrs.obs where obs_id in (1419131);
+ or     delete from openmrs.obs where obs_id in (1438204);
   
