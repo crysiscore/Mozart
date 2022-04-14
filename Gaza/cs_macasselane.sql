@@ -6,15 +6,20 @@ set @sismaLocationID := 1090928; -- cs_macasselane
 set @openmrsID :=316;
 
 
-update global_property 
-set property_value = @sismaLocationID
-where  property ='esaudemetadata.hfc';
+insert into global_property (property,property_value,description,uuid)
+values('esaudemetadata.hfc',@sismaLocationID,'health facility code',uuid());
+insert into global_property (property,property_value,description,uuid) 
+values('esaudemetadata.dateToImportTo',@ydata,'Date when data should be fetched to provide it',uuid());
 
-update global_property 
-set property_value = @ydata 
-where  property ='esaudemetadata.dateToImportTo';
+-- update global_property 
+-- set property_value = @sismaLocationID
+-- where  property ='esaudemetadata.hfc';
 
-select  property,property_value,description,uuid from global_property where property ='esaudemetadata.hfc' or property='esaudemetadata.dateToImportTo';
+-- update global_property 
+-- set property_value = @ydata 
+-- where  property ='esaudemetadata.dateToImportTo';
+
+-- select  property,property_value,description,uuid from global_property where property ='esaudemetadata.hfc' or property='esaudemetadata.dateToImportTo';
 
 
 SET foreign_key_checks = 0;

@@ -1,0 +1,125 @@
+-- ----------------------------------------------   mozart_altomae ----------------------------
+
+docker run -d --name mozart_altomae -p 3401:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it   mozart_altomae    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-16\ 11-00-02_cs_altomae.sql 
+
+--   ------------------------------------------- mozart_porto -------------------------------------------
+docker run -d --name mozart_porto -p 3414:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data  crysiscore/mysql_master:v5.6 
+
+docker exec  -it    mozart_porto   bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-16\
+
+--  ----------------------------------------------  mozart_bagamoio ----------------------------
+docker run -d --name mozart_bagamoio -p 3402:3306  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it    mozart_bagamoio   bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-16\ 11-00-02_cs_altomae.sql 
+
+
+--  -------------------------------------------  mozart_inhagoia -------------------------------------------
+docker run -d --name mozart_inhagoia -p 3409:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+ docker exec  -it   mozart_inhagoia    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < Cs_Inhagoia_2021-04-14.sql
+
+
+-- -------------------------------------------  mozart_zimpeto -------------------------------------------
+docker run -d --name mozart_zimpeto -p 3413:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+ docker exec  -it    mozart_zimpeto   bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-14 
+
+--  ------------------------------------------- mozart_inhaca -------------------------------------------
+docker run -d --name mozart_inhaca -p 3408:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+ docker exec  -it  mozart_inhaca    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-14 
+
+
+--  -------------------------------------------  mozart_catembe  -------------------------------------------
+docker run -d --name mozart_catembe -p 3403:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec -it mozart_catembe      bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 
+
+
+-- -------------------------------------------  mozart_incassane -------------------------------------------
+docker run -d --name mozart_incassane -p 3407:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+ 
+docker exec -it mozart_incassane      bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < Cs_Incassane_2021-04-15.sql
+
+-- ------------------------------------------  mozart_josemacamocs ------------------------------------------ 
+#TODO
+docker run -d --name mozart_josemacamocs -p 3405:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_josemacamocs  bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+
+-- ------------------------------------------   mozart_josemacamohg ------------------------------------------
+docker run -d --name mozart_josemacamohg -p 3406:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_josemacamohg     bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+-- -------------------------------------------  mozart_magoanine_tendas -------------------------------------------
+docker run -d --name mozart_magoanine_tendas -p 3411:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_magoanine_tendas     bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+ 
+--  ------------------------------------------ mozart_magoanine A ------------------------------------------
+#TODO
+docker run -d --name mozart_magoanine -p 3410:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it   mozart_magoanine    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+
+
+
+--  -------------------------------------------  mozart_xipamanine -------------------------------------------
+docker run -d --name mozart_xipamanine -p 3412:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_xipamanine   bash  
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+
+--  -------------------------------------------  mozart_chamanculo --  ------------------------------------------- 
+docker run -d --name mozart_chamanculo -p 3404:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_chamanculo    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+
+
+
+
+--  -------------------------------------------  mozart_hpi --  ------------------------------------------- 
+docker run -d --name mozart_hpi -p 3415:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups:/data crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_hpi    bash 
+cd /data/Mozart/Q4_2021
+mysql -uesaude -pesaude openmrs < 2021-04-23 
+
+
+
+

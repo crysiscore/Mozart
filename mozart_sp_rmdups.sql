@@ -28,7 +28,7 @@
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_remove_dups_buscas`()
+CREATE  PROCEDURE `proc_remove_dups_buscas`()
 BEGIN
   DECLARE dup int;
   
@@ -90,7 +90,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_remove_dups_filas`()
+CREATE  PROCEDURE `proc_remove_dups_filas`()
 BEGIN
   DECLARE dup int;
   
