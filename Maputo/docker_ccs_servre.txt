@@ -1,108 +1,289 @@
 -- ----------------------------------------------   mozart_altomae ----------------------------
 
-docker run -d --name mozart_altomae -p 3401:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_altomae -p 3401:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
-docker exec  -it   mozart_altomae    bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-16\ 11-00-02_cs_altomae.sql 
-
---   ------------------------------------------- mozart_porto -------------------------------------------
-docker run -d --name  mozart_porto  -p 3414:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
-
-
-docker exec  -it    mozart_porto   bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-16\ 11-00-02_cs_altomae.sql 
-
---  ----------------------------------------------  mozart_bagamoio ----------------------------
-docker run -d --name mozart_bagamoio -p 3402:3306  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
-
-docker exec  -it    mozart_bagamoio   bash 
-
-
- nano /etc/mysql/my.cnf
-character-set-server=utf8
-collation-server=utf8_general_ci
+docker exec  -it  mozart_altomae    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+# modificar o ficheiro cnf
 exit
-docker stop mozart_bagamoio
-docker start  mozart_bagamoio
-docker exec  -it  mozart_bagamoio    bash 
-mysql -uesaude -pesaude openmrs
+docker stop mozart_altomae
+docker start  mozart_altomae
+docker exec  -it  mozart_altomae    bash 
+mysql -uesaude -pesaude 
  drop database openmrs; 
  create database openmrs;
-cd /data
-mysql -uesaude -pesaude openmrs < 
 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--   ------------------------------------------- mozart_porto -------------------------------------------
+docker run -d --name  mozart_porto  -p 3414:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_porto    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_porto
+docker start  mozart_porto
+docker exec  -it  mozart_porto    bash 
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--  ----------------------------------------------  mozart_bagamoio ----------------------------
+docker run -d --name mozart_bagamoio -p 3402:3306  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_porto    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_porto
+docker start  mozart_porto
+docker exec  -it  mozart_porto    bash 
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+
+cd /data
+mysql -uesaude -pesaude openmrs <  
 
 --  -------------------------------------------  mozart_inhagoia -------------------------------------------
-docker run -d --name mozart_inhagoia -p 3409:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_inhagoia -p 3409:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
- docker exec  -it   mozart_inhagoia    bash 
+docker exec  -it  mozart_inhagoia    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_inhagoia
+docker start  mozart_inhagoia
+docker exec  -it  mozart_inhagoia    bash 
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+
 cd /data
-mysql -uesaude -pesaude openmrs < Cs_Inhagoia_2021-04-14.sql
+mysql -uesaude -pesaude openmrs <  
 
+
+-- -------------------------------------------  mozart_magoanine_tendas -------------------------------------------
+docker run -d --name mozart_magoanine_tendas -p 3411:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_magoanine_tendas    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_magoanine_tendas
+docker start  mozart_magoanine_tendas
+docker exec  -it  mozart_magoanine_tendas    bash 
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+
+cd /data
+mysql -uesaude -pesaude openmrs <  
+ 
+--  ------------------------------------------ mozart_magoanine A ------------------------------------------
+docker run -d --name mozart_magoanine -p 3410:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_magoanine    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_magoanine
+docker start  mozart_magoanine
+docker exec  -it  mozart_magoanine    bash 
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+
+cd /data
+mysql -uesaude -pesaude openmrs <  
 
 -- -------------------------------------------  mozart_zimpeto -------------------------------------------
-docker run -d --name mozart_zimpeto -p 3413:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_zimpeto -p 3413:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
- docker exec  -it    mozart_zimpeto   bash 
+docker exec  -it  mozart_zimpeto    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_zimpeto
+docker start  mozart_zimpeto
+docker exec  -it  mozart_zimpeto    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
 cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-14 
+mysql -uesaude -pesaude openmrs <  
 
 --  ------------------------------------------- mozart_inhaca -------------------------------------------
-docker run -d --name mozart_inhaca -p 3408:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_inhaca -p 3408:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
- docker exec  -it  mozart_inhaca    bash 
+docker exec  -it  mozart_inhaca    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_inhaca
+docker start  mozart_inhaca
+docker exec  -it  mozart_inhaca    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
 cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-14 
-
-
---  -------------------------------------------  mozart_catembe  -------------------------------------------
-docker run -d --name mozart_catembe -p 3403:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
-
-docker exec -it mozart_catembe      bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 
+mysql -uesaude -pesaude openmrs <  
 
 
 -- -------------------------------------------  mozart_incassane -------------------------------------------
-docker run -d --name mozart_incassane -p 3407:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
- 
-docker exec -it mozart_incassane      bash 
+docker run -d --name mozart_incassane -p 3407:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_incassane    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_incassane
+docker start  mozart_incassane
+docker exec  -it  mozart_incassane    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
 cd /data
-mysql -uesaude -pesaude openmrs < Cs_Incassane_2021-04-15.sql
+mysql -uesaude -pesaude openmrs <  
+--  -------------------------------------------  mozart_catembe  -------------------------------------------
+docker run -d --name mozart_catembe -p 3403:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_catembe    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_catembe
+docker start  mozart_catembe
+docker exec  -it  mozart_catembe    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
+cd /data
+mysql -uesaude -pesaude openmrs <
+
+--  -------------------------------------------  mozart_chamanculo --  ------------------------------------------- 
+docker run -d --name mozart_chamanculo -p 3404:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
+
+docker exec  -it  mozart_chamanculo    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_chamanculo
+docker start  mozart_chamanculo
+docker exec  -it  mozart_chamanculo    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
+cd /data
+mysql -uesaude -pesaude openmrs <
 
 -- ------------------------------------------  mozart_josemacamocs ------------------------------------------
-docker run -d --name mozart_josemacamocs -p 3405:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_jmcs -p 3405:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
-docker exec  -it  mozart_josemacamocs    bash 
+docker exec  -it  mozart_jmcs    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_jmcs
+docker start  mozart_jmcs
+docker exec  -it  mozart_jmcs    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
 cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-23 
-
-
+mysql -uesaude -pesaude openmrs <
 -- ------------------------------------------   mozart_josemacamohg ------------------------------------------
-docker run -d --name mozart_josemacamohg -p 3406:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
+docker run -d --name mozart_jmhg -p 3406:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data -v /data_ssd_2/mozart_data_dir:/mysql_data_dir \
+ crysiscore/mysql_master:v5.6 
 
-docker exec  -it  mozart_josemacamocs     bash 
+docker exec  -it  mozart_jmhg    bash 
+echo "" > /etc/mysql/my.cnf 
+nano  /etc/mysql/my.cnf 
+
+#Modificar o ficheiro cnf
+exit
+docker stop mozart_jmhg
+docker start  mozart_jmhg
+docker exec  -it  mozart_jmhg    bash 
+
+
+mysql -uesaude -pesaude 
+drop database openmrs; 
+create database openmrs;
+show variables like '%data%';
+
+
 cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-23 
-
--- -------------------------------------------  mozart_magoanine_tendas -------------------------------------------
-docker run -d --name mozart_magoanine_tendas -p 3411:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
-
-docker exec  -it  mozart_magoanine_tendas     bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-23 
-
- 
---  ------------------------------------------ mozart_magoanine A ------------------------------------------
-docker run -d --name mozart_magoanine -p 3410:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
-
-docker exec  -it   mozart_magoanine    bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-23 
-
-
+mysql -uesaude -pesaude openmrs <
 
 
 --  -------------------------------------------  mozart_xipamanine -------------------------------------------
@@ -113,12 +294,7 @@ cd /data
 mysql -uesaude -pesaude openmrs < 2021-04-23 
 
 
---  -------------------------------------------  mozart_chamanculo --  ------------------------------------------- 
-docker run -d --name mozart_chamanculo -p 3404:3306 -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q2_2022:/data crysiscore/mysql_master:v5.6 
 
-docker exec  -it  mozart_chamanculo    bash 
-cd /data
-mysql -uesaude -pesaude openmrs < 2021-04-23 
 
 
 

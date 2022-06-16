@@ -35,7 +35,7 @@ UPDATE patient_program en SET en.location_id = @openmrsID WHERE en.location_id I
 
 call temp.proc_remove_dups_filas();
 call temp.proc_remove_dups_buscas();
-
+call temp.proc_limpar_nid();
 
 
 CALL export_db.EXPORTDB('2022-03-20'); 
