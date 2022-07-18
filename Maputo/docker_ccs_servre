@@ -1,0 +1,110 @@
+# Remover todos ficheiros do Mazart Passsado
+cd /data_ssd_2/mozart_data_dir
+sudo rm -rf *
+# criar os directorios correspondentes as us que vais processar 
+ sudo mkdir altomae
+ sudo mkdir zimpeto
+ sudo mkdir porto
+ sudo mkdir bagamoio
+ sudo mkdir inhagoia
+ sudo mkdir magoanine
+ sudo mkdir magoanine-tenda
+ sudo mkdir inhaca
+ sudo mkdir catembe
+ sudo mkdir incassane
+ sudo mkdir chamanculo
+ sudo mkdir jmcs
+ sudo mkdir jmhg
+ sudo mkdir xipamanine
+
+# Criar os container e importar as respectivas BD
+-- ----------------------------------------------   mozart_altomae ----------------------------
+docker run --name=mozart_altomae -p 3401:3306 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/altomae,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_altomae    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+
+--   ------------------------------------------- mozart_porto -------------------------------------------
+
+docker run --name=mozart_porto -p 3414:3306 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/porto,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_porto    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--  ----------------------------------------------  mozart_bagamoio ----------------------------
+docker run --name=mozart_bagamoio -p 3402:3306 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/bagamoio,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_porto    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--  -------------------------------------------  mozart_inhagoia -------------------------------------------
+docker run --name=mozart_inhagoia -p 3409:3306 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/inhagoia,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_inhagoia    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+
+-- -------------------------------------------  mozart_magoanine_tendas -------------------------------------------
+docker run --name=mozart_magoanine_tendas -p 3411:330 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/magoanine-tenda,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_magoanine_tendas    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+ 
+--  ------------------------------------------ mozart_magoanine A ------------------------------------------
+docker run --name=mozart_magoanine -p 3410:3306 --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/magoanine,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_magoanine    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+-- -------------------------------------------  mozart_zimpeto -------------------------------------------
+docker run --name=mozart_zimpeto -p 3413:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/zimpeto,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_zimpeto    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--  ------------------------------------------- mozart_inhaca -------------------------------------------
+docker run --name=mozart_inhaca -p 3408:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/inhaca,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_inhaca    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+
+-- -------------------------------------------  mozart_incassane -------------------------------------------
+
+docker run --name=mozart_incassane -p 3407:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/incassane,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_incassane    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <  
+
+--  -------------------------------------------  mozart_catembe  -------------------------------------------
+docker run --name=mozart_catembe -p 3403:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/catembe,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_catembe    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <
+
+--  -------------------------------------------  mozart_chamanculo --  ------------------------------------------- 
+docker run --name=mozart_chamanculo -p 3404:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/chamanculo,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_chamanculo    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <
+
+-- ------------------------------------------  mozart_josemacamocs ------------------------------------------
+docker run --name=mozart_jmcs -p 3405:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/jmcs,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_jmcs    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <
+
+
+-- ------------------------------------------   mozart_josemacamohg ------------------------------------------
+docker run --name=mozart_jmhg -p 3406:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/jmhg,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_jmhg    bash 
+cd /data
+mysql -uesaude -pesaude openmrs <
+
+
+--  -------------------------------------------  mozart_xipamanine -------------------------------------------
+docker run --name=mozart_xipamanine -p 3412:3306  --mount type=bind,src=/data_ssd_2/mysql_docker/my.cnf,dst=/etc/my.cnf --mount type=bind,src=/data_ssd_2/mozart_data_dir/xipamanine,dst=/var/lib/mysql  -e MYSQL_USER=esaude -e MYSQL_PASSWORD=esaude -e MYSQL_DATABASE=openmrs -e MYSQL_ROOT_PASSWORD=password  -v ~/openmrs/backups/Mozart/Q3_2022:/data  -d mysql/mysql-server:5.6.51
+docker exec  -it  mozart_xipamanine   bash  
+cd /data
+mysql -uesaude -pesaude openmrs < 2021-04-23 
